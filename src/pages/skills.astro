@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skillCategories = [
+  {
+    name: "Program & Project Management",
+    color: "blue",
+    skills: [
+      "PMO Leadership & Governance",
+      "IT Portfolio Management",
+      "Earned Value Management (EVM)",
+      "IT Financial Management & Optimization",
+      "Resource Planning & Utilization",
+      "Performance Metrics & Reporting",
+      "IT Risk Management & Mitigation",
+      "Project Compliance & Audits"
+    ]
+  },
+  {
+    name: "Agile & Lean",
+    color: "green",
+    skills: [
+      "Agile Transformation",
+      "SAFe for Lean Enterprise",
+      "Scrum Framework",
+      "Kanban",
+      "Lean Six Sigma (Green Belt)",
+      "Continuous Process Improvement",
+      "Change Management",
+      "Team Coaching & Mentoring"
+    ]
+  },
+  {
+    name: "Technical",
+    color: "purple",
+    skills: [
+      "Cloud Infrastructure (AWS, Azure)",
+      "CI/CD Pipelines",
+      "Python / Flask",
+      "RESTful APIs & MuleSoft",
+      "GitHub Actions",
+      "Elastic Beanstalk",
+      "Salesforce CRM",
+      "Microsoft Dynamics NAV"
+    ]
+  },
+  {
+    name: "Tools & Platforms",
+    color: "orange",
+    skills: [
+      "JIRA",
+      "Microsoft Project",
+      "Trello / Placker",
+      "Backstage (Developer Portal)",
+      "Confluence",
+      "ServiceNow",
+      "Cucumber / Selenium",
+      "Git / Version Control"
+    ]
+  },
+  {
+    name: "Leadership & Soft Skills",
+    color: "teal",
+    skills: [
+      "Cross-Functional Team Leadership",
+      "Executive Stakeholder Management",
+      "Vendor Management & Contract Negotiation",
+      "Technical Program Oversight",
+      "Training & Development",
+      "Strategic Planning",
+      "Communication & Collaboration",
+      "Problem-Solving & Analytics"
+    ]
+  },
+  {
+    name: "Domain Expertise",
+    color: "red",
+    skills: [
+      "DoD / Defense Programs",
+      "Government Contracting",
+      "Retail & E-Commerce",
+      "Manufacturing",
+      "Aerospace",
+      "Agricultural Technology",
+      "Security Clearance (TS/SCI - Inactive)",
+      "SOC 2 / CMMI Compliance"
+    ]
+  }
+];
+
+const colorMap: Record<string, { bg: string; text: string; border: string }> = {
+  blue: { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
+  green: { bg: "bg-green-50", text: "text-green-700", border: "border-green-200" },
+  purple: { bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-200" },
+  orange: { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
+  teal: { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200" },
+  red: { bg: "bg-red-50", text: "text-red-700", border: "border-red-200" }
+};
+---
+
+<Layout title="Skills">
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Skills & Expertise</h1>
+      <p class="text-xl text-slate-600 mb-12">A comprehensive toolkit built over 20+ years in program management and technology leadership</p>
+
+      <!-- Certifications Banner -->
+      <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-xl mb-12">
+        <h2 class="text-2xl font-bold mb-4">Certifications</h2>
+        <div class="flex flex-wrap gap-4">
+          <div class="bg-white/20 px-4 py-2 rounded-lg">
+            <span class="font-bold">PMP</span>
+            <span class="text-blue-200 text-sm ml-2">Project Management Professional</span>
+          </div>
+          <div class="bg-white/20 px-4 py-2 rounded-lg">
+            <span class="font-bold">PMI-ACP</span>
+            <span class="text-blue-200 text-sm ml-2">Agile Certified Practitioner</span>
+          </div>
+          <div class="bg-white/20 px-4 py-2 rounded-lg">
+            <span class="font-bold">CSPO</span>
+            <span class="text-blue-200 text-sm ml-2">Certified Scrum Product Owner</span>
+          </div>
+          <div class="bg-white/20 px-4 py-2 rounded-lg">
+            <span class="font-bold">CSM</span>
+            <span class="text-blue-200 text-sm ml-2">Certified ScrumMaster</span>
+          </div>
+          <div class="bg-white/20 px-4 py-2 rounded-lg">
+            <span class="font-bold">LSS Green Belt</span>
+            <span class="text-blue-200 text-sm ml-2">Lean Six Sigma</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skillCategories.map((category) => {
+          const colors = colorMap[category.color];
+          return (
+            <div class={`${colors.bg} border ${colors.border} p-6 rounded-xl`}>
+              <h3 class={`text-lg font-bold ${colors.text} mb-4`}>{category.name}</h3>
+              <ul class="space-y-2">
+                {category.skills.map((skill) => (
+                  <li class="flex items-center gap-2 text-slate-700">
+                    <svg class={`w-4 h-4 ${colors.text}`} fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-sm">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Technical Projects Note -->
+      <div class="mt-12 bg-slate-100 p-8 rounded-xl">
+        <h2 class="text-2xl font-bold mb-4">Continuous Learning</h2>
+        <p class="text-slate-600 mb-4">
+          I believe in staying current with technology trends and continuously expanding my skillset.
+          Recent explorations include:
+        </p>
+        <ul class="text-slate-600 space-y-2">
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600">•</span>
+            <span><strong>AI-Assisted Development:</strong> Building applications with Claude Code and other AI pair programming tools</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600">•</span>
+            <span><strong>Modern Web Frameworks:</strong> Astro, Next.js, and Tailwind CSS for responsive, performant web applications</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600">•</span>
+            <span><strong>Cloud-Native Architecture:</strong> Serverless deployments with Vercel, AWS Lambda, and containerization</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
