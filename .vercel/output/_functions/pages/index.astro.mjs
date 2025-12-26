@@ -1,0 +1,39 @@
+import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_QXGJpzTU.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../chunks/Layout_CVOqSYH3.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$Index = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Home" }, { "default": ($$result2) => renderTemplate`  ${maybeRenderHead()}<section class="min-h-[90vh] flex items-center bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"> <div class="max-w-6xl mx-auto px-4 py-20"> <div class="grid md:grid-cols-2 gap-12 items-center"> <div> <p class="text-blue-400 font-medium mb-4">Senior Program Manager | Veteran</p> <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+Jay Samples
+</h1> <p class="text-xl text-slate-300 mb-4">
+PMP, PMI-ACP, CSPO, CSM
+</p> <p class="text-lg text-slate-400 mb-8 leading-relaxed">
+Delivering exceptional improvements through product, service, and organizational transformations.
+            20+ years of experience driving continuous process improvement across defense, government, retail, and manufacturing industries.
+</p> <div class="flex flex-wrap gap-4"> <a href="/experience" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+View Experience
+</a> <a href="/contact" class="px-6 py-3 border border-slate-500 text-white font-medium rounded-lg hover:bg-slate-700 transition-colors">
+Get In Touch
+</a> </div> </div> <div class="hidden md:flex justify-center"> <img src="/images/profile.jpeg" alt="Jay Samples" class="w-72 h-72 rounded-full object-cover shadow-2xl border-4 border-blue-500"> </div> </div> </div> </section>  <section class="py-16 bg-white"> <div class="max-w-6xl mx-auto px-4"> <h2 class="text-3xl font-bold text-center mb-12">Career Highlights</h2> <div class="grid md:grid-cols-3 gap-8"> <div class="p-6 bg-slate-50 rounded-xl"> <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"> <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path> </svg> </div> <h3 class="text-xl font-semibold mb-2">Defense & DoD</h3> <p class="text-slate-600">$20M+ Navy programs, TS/SCI clearance (inactive), AWACS/JSTARS systems, NATO missile projects</p> </div> <div class="p-6 bg-slate-50 rounded-xl"> <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"> <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path> </svg> </div> <h3 class="text-xl font-semibold mb-2">Business Impact</h3> <p class="text-slate-600">$5M retail sales uplift, $500K under budget deliveries, 30% uptime improvements, 25% audit time reduction</p> </div> <div class="p-6 bg-slate-50 rounded-xl"> <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"> <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path> </svg> </div> <h3 class="text-xl font-semibold mb-2">Leadership</h3> <p class="text-slate-600">Agile transformation lead, PMI-ACP instructor, 200+ personnel coached, cross-functional team leadership</p> </div> </div> </div> </section>  <section class="py-16 bg-slate-100"> <div class="max-w-6xl mx-auto px-4"> <h2 class="text-3xl font-bold text-center mb-12">Recent Experience</h2> <div class="space-y-6"> <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col md:flex-row md:items-center gap-4"> <div class="md:w-48 text-sm text-slate-500 font-medium">Nov 2024 – Present</div> <div class="flex-1"> <h3 class="text-lg font-semibold">Program Manager – DoD Programs</h3> <p class="text-blue-600">Hose-McCann Communications</p> </div> </div> <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col md:flex-row md:items-center gap-4"> <div class="md:w-48 text-sm text-slate-500 font-medium">Jul 2024 – Nov 2024</div> <div class="flex-1"> <h3 class="text-lg font-semibold">Scrum Coach – PMI-ACP Certification Instructor</h3> <p class="text-blue-600">Independent Consultant</p> </div> </div> <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col md:flex-row md:items-center gap-4"> <div class="md:w-48 text-sm text-slate-500 font-medium">Mar 2023 – Nov 2024</div> <div class="flex-1"> <h3 class="text-lg font-semibold">Senior Director – Engineering & Platform Enablement</h3> <p class="text-blue-600">Foot Locker</p> </div> </div> </div> <div class="text-center mt-8"> <a href="/experience" class="text-blue-600 font-medium hover:text-blue-700">
+View Full Experience →
+</a> </div> </div> </section>  <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800"> <div class="max-w-4xl mx-auto px-4 text-center"> <h2 class="text-3xl font-bold text-white mb-6">Let's Work Together</h2> <p class="text-xl text-blue-100 mb-8">
+Looking for an experienced program manager to drive your next transformation initiative?
+</p> <a href="/contact" class="inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-slate-100 transition-colors">
+Get In Touch
+</a> </div> </section> ` })}`;
+}, "/Users/jaysamples/devproj/jaysamples-portfolio/src/pages/index.astro", void 0);
+
+const $$file = "/Users/jaysamples/devproj/jaysamples-portfolio/src/pages/index.astro";
+const $$url = "";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

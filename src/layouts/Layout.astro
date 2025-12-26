@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import ChatWidget from '../components/ChatWidget.astro';
 
 interface Props {
   title: string;
@@ -79,5 +80,7 @@ const { title, description = "Jay Samples - Senior Program Manager | Veteran | T
         document.getElementById('mobile-menu')?.classList.toggle('hidden');
       });
     </script>
+
+    <ChatWidget />
   </body>
 </html>
