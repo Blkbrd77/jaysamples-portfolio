@@ -110,7 +110,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   } catch (error) {
     console.error('Chat API error:', error);
-    return new Response(JSON.stringify({ error: 'Something went wrong. Please try again.' }), {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return new Response(JSON.stringify({ error: `Something went wrong: ${errorMessage}` }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
