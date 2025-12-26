@@ -1,5 +1,4 @@
 import type { APIRoute } from 'astro';
-import Anthropic from '@anthropic-ai/sdk';
 
 export const prerender = false;
 
@@ -63,7 +62,8 @@ const MAX_INPUT_LENGTH = 500;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { message } = await request.json();
+    const body = await request.json();
+    const message = body?.message;
 
     // Input validation
     if (!message || typeof message !== 'string') {
@@ -88,20 +88,35 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const client = new Anthropic({ apiKey });
-
-    const response = await client.messages.create({
-      model: 'claude-3-5-haiku-20241022',
-      max_tokens: MAX_TOKENS,
-      system: SYSTEM_PROMPT,
-      messages: [
-        { role: 'user', content: message }
-      ]
+    // Call Anthropic API directly with fetch
+    const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-3-5-haiku-20241022',
+        max_tokens: MAX_TOKENS,
+        system: SYSTEM_PROMPT,
+        messages: [
+          { role: 'user', content: message }
+        ]
+      })
     });
 
-    const assistantMessage = response.content[0].type === 'text'
-      ? response.content[0].text
-      : 'Sorry, I could not generate a response.';
+    if (!anthropicResponse.ok) {
+      const errorData = await anthropicResponse.text();
+      console.error('Anthropic API error:', errorData);
+      return new Response(JSON.stringify({ error: 'AI service error. Please try again.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    const data = await anthropicResponse.json();
+    const assistantMessage = data.content?.[0]?.text || 'Sorry, I could not generate a response.';
 
     return new Response(JSON.stringify({ response: assistantMessage }), {
       status: 200,
