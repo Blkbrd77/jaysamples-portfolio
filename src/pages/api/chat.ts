@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import Anthropic from '@anthropic-ai/sdk';
 
+export const prerender = false;
+
 const SYSTEM_PROMPT = `You are a helpful assistant on Jay Samples' professional portfolio website. Your role is to answer questions about Jay's background, experience, and skills based on his resume.
 
 ABOUT JAY SAMPLES:
