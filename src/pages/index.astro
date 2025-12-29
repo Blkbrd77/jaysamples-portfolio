@@ -6,8 +6,17 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hero Section -->
   <section class="min-h-[90vh] flex items-center bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800">
     <div class="max-w-6xl mx-auto px-4 py-20">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <!-- Profile image - shows first on mobile, second on desktop -->
+        <div class="flex justify-center md:order-2">
+          <img
+            src="/images/profile.jpeg"
+            alt="Jay Samples"
+            class="w-48 h-48 md:w-72 md:h-72 rounded-full object-cover shadow-2xl border-4 border-blue-500"
+          />
+        </div>
+        <!-- Text content - shows second on mobile, first on desktop -->
+        <div class="text-center md:text-left md:order-1">
           <p class="text-blue-400 font-medium mb-4">Senior Program Manager | Veteran</p>
           <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
             Jay Samples
@@ -19,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
             Delivering exceptional improvements through product, service, and organizational transformations.
             20+ years of experience driving continuous process improvement across defense, government, retail, and manufacturing industries.
           </p>
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
             <a href="/experience" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
               View Experience
             </a>
@@ -27,13 +36,6 @@ import Layout from '../layouts/Layout.astro';
               Get In Touch
             </a>
           </div>
-        </div>
-        <div class="hidden md:flex justify-center">
-          <img
-            src="/images/profile.jpeg"
-            alt="Jay Samples"
-            class="w-72 h-72 rounded-full object-cover shadow-2xl border-4 border-blue-500"
-          />
         </div>
       </div>
     </div>
