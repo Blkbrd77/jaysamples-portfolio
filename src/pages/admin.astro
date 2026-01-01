@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getStats, getPhases, getBadges, getWeeks } from '../lib/supabase';
+
+// Fetch current data
+const stats = await getStats();
+const phases = await getPhases();
+const badges = await getBadges();
+const weeks = await getWeeks();
+---
+
+<Layout title="Admin - Goals Tracker">
+  <section class="py-16 bg-slate-100 min-h-screen">
+    <div class="max-w-2xl mx-auto px-4">
+
+      <!-- Login Form (shown when not authenticated) -->
+      <div id="login-section" class="bg-white rounded-xl p-8 shadow-lg">
+        <h1 class="text-2xl font-bold text-slate-800 mb-6">Admin Login</h1>
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <input type="password" id="password" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter admin password" />
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+            Login
+          </button>
+          <p id="login-error" class="text-red-500 text-sm hidden">Invalid password</p>
+        </form>
+      </div>
+
+      <!-- Admin Panel (shown when authenticated) -->
+      <div id="admin-section" class="hidden space-y-6">
+
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-slate-800">Goals Admin</h1>
+          <button id="logout-btn" class="text-slate-500 hover:text-slate-700 text-sm">Logout</button>
+        </div>
+
+        <!-- Stats Update -->
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">Overall Stats</h2>
+          <form id="stats-form" class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Day Streak</label>
+              <input type="number" name="current_streak" value={stats?.current_streak ?? 0} class="w-full px-3 py-2 border border-slate-300 rounded-lg" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Total Points</label>
+              <input type="number" name="total_points" value={stats?.total_points ?? 0} class="w-full px-3 py-2 border border-slate-300 rounded-lg" />
+            </div>
+            <div class="col-span-2">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Overall Progress (%)</label>
+              <input type="range" name="overall_progress" value={stats?.overall_progress ?? 0} min="0" max="100" class="w-full" />
+              <span id="overall-progress-value" class="text-sm text-slate-500">{stats?.overall_progress ?? 0}%</span>
+            </div>
+            <div class="col-span-2">
+              <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                Update Stats
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Phase Progress -->
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">Phase Progress</h2>
+          <form id="phases-form" class="space-y-4">
+            {phases.map(phase => (
+              <div class="flex items-center gap-4">
+                <span class={`w-3 h-3 rounded-full ${phase.color === 'blue' ? 'bg-blue-500' : phase.color === 'green' ? 'bg-green-500' : 'bg-purple-500'}`}></span>
+                <span class="text-slate-700 w-24">{phase.month}</span>
+                <input type="range" name={`phase-${phase.id}`} value={phase.progress} min="0" max="100" class="flex-1" data-phase-id={phase.id} />
+                <span class="text-sm text-slate-500 w-12 phase-value">{phase.progress}%</span>
+              </div>
+            ))}
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+              Update Phases
+            </button>
+          </form>
+        </div>
+
+        <!-- Week Completion -->
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">Week Completion</h2>
+          <form id="weeks-form" class="space-y-3">
+            {weeks.map(week => (
+              <div class="flex items-center gap-4 py-2 border-b border-slate-100">
+                <input type="checkbox" name={`week-${week.id}`} checked={week.completed} class="w-5 h-5 text-blue-600 rounded" data-week-id={week.id} />
+                <span class="text-slate-700 flex-1">Week {week.week_number}: {week.focus}</span>
+                <input type="number" name={`week-points-${week.id}`} value={week.points_earned} placeholder="pts" class="w-20 px-2 py-1 border border-slate-300 rounded text-sm" data-week-id={week.id} />
+              </div>
+            ))}
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+              Update Weeks
+            </button>
+          </form>
+        </div>
+
+        <!-- Badges -->
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">Badges</h2>
+          <form id="badges-form" class="grid grid-cols-2 gap-3">
+            {badges.map(badge => (
+              <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer hover:bg-slate-100">
+                <input type="checkbox" name={`badge-${badge.id}`} checked={badge.unlocked} class="w-5 h-5 text-yellow-500 rounded" data-badge-id={badge.id} />
+                <span class="text-xl">{badge.icon}</span>
+                <span class="text-sm text-slate-700">{badge.name}</span>
+              </label>
+            ))}
+            <div class="col-span-2 mt-2">
+              <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                Update Badges
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="hidden bg-green-100 text-green-700 p-4 rounded-lg text-center">
+          Changes saved successfully!
+        </div>
+
+        <div class="text-center">
+          <a href="/goals" class="text-blue-600 hover:underline">← Back to Goals</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ supabaseUrl: import.meta.env.PUBLIC_SUPABASE_URL, supabaseKey: import.meta.env.PUBLIC_SUPABASE_ANON_KEY }}>
+    // Simple client-side auth and updates
+    const STORAGE_KEY = 'goals_admin_auth';
+
+    // Check if already authenticated
+    if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+      showAdmin();
+    }
+
+    // Login form
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+
+      // Verify password against Supabase
+      const response = await fetch(`${supabaseUrl}/rest/v1/admin_auth?select=password_hash`, {
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`
+        }
+      });
+      const data = await response.json();
+
+      if (data[0]?.password_hash === password) {
+        sessionStorage.setItem(STORAGE_KEY, 'true');
+        sessionStorage.setItem('goals_password', password);
+        showAdmin();
+      } else {
+        document.getElementById('login-error').classList.remove('hidden');
+      }
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      sessionStorage.removeItem(STORAGE_KEY);
+      sessionStorage.removeItem('goals_password');
+      location.reload();
+    });
+
+    function showAdmin() {
+      document.getElementById('login-section').classList.add('hidden');
+      document.getElementById('admin-section').classList.remove('hidden');
+    }
+
+    // Update range display
+    document.querySelector('input[name="overall_progress"]').addEventListener('input', (e) => {
+      document.getElementById('overall-progress-value').textContent = e.target.value + '%';
+    });
+
+    document.querySelectorAll('#phases-form input[type="range"]').forEach(input => {
+      input.addEventListener('input', (e) => {
+        e.target.nextElementSibling.textContent = e.target.value + '%';
+      });
+    });
+
+    // Stats form
+    document.getElementById('stats-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+
+      await fetch(`${supabaseUrl}/rest/v1/stats?id=eq.1`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          current_streak: parseInt(formData.get('current_streak')),
+          total_points: parseInt(formData.get('total_points')),
+          overall_progress: parseInt(formData.get('overall_progress')),
+          updated_at: new Date().toISOString()
+        })
+      });
+
+      showSuccess();
+    });
+
+    // Phases form
+    document.getElementById('phases-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const inputs = e.target.querySelectorAll('input[type="range"]');
+
+      for (const input of inputs) {
+        const phaseId = input.dataset.phaseId;
+        await fetch(`${supabaseUrl}/rest/v1/phases?id=eq.${phaseId}`, {
+          method: 'PATCH',
+          headers: {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            progress: parseInt(input.value),
+            updated_at: new Date().toISOString()
+          })
+        });
+      }
+
+      showSuccess();
+    });
+
+    // Weeks form
+    document.getElementById('weeks-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const checkboxes = e.target.querySelectorAll('input[type="checkbox"]');
+
+      for (const checkbox of checkboxes) {
+        const weekId = checkbox.dataset.weekId;
+        const pointsInput = e.target.querySelector(`input[name="week-points-${weekId}"]`);
+
+        await fetch(`${supabaseUrl}/rest/v1/weeks?id=eq.${weekId}`, {
+          method: 'PATCH',
+          headers: {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            completed: checkbox.checked,
+            points_earned: parseInt(pointsInput.value) || 0,
+            updated_at: new Date().toISOString()
+          })
+        });
+      }
+
+      showSuccess();
+    });
+
+    // Badges form
+    document.getElementById('badges-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const checkboxes = e.target.querySelectorAll('input[type="checkbox"]');
+
+      for (const checkbox of checkboxes) {
+        const badgeId = checkbox.dataset.badgeId;
+
+        await fetch(`${supabaseUrl}/rest/v1/badges?id=eq.${badgeId}`, {
+          method: 'PATCH',
+          headers: {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            unlocked: checkbox.checked,
+            unlocked_at: checkbox.checked ? new Date().toISOString() : null
+          })
+        });
+      }
+
+      showSuccess();
+    });
+
+    function showSuccess() {
+      const msg = document.getElementById('success-message');
+      msg.classList.remove('hidden');
+      setTimeout(() => msg.classList.add('hidden'), 3000);
+    }
+  </script>
+</Layout>
