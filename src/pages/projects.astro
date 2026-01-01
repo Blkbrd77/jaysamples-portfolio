@@ -72,6 +72,79 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+      <!-- Featured Project: AI/PM Upskilling -->
+      <div class="bg-gradient-to-br from-blue-600 to-purple-700 text-white p-8 rounded-xl mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded-full">IN PROGRESS</span>
+          <span class="px-3 py-1 bg-green-500 text-xs font-bold rounded-full">Q1 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-2">AI/PM Upskilling Portfolio</h2>
+        <p class="text-blue-100 mb-6">Machine learning journey with gamified progress tracking and dynamic dashboard</p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-yellow-300 mb-3">The Goal</h3>
+            <p class="text-blue-100 text-sm mb-4">
+              A 13-week structured learning program to transition into AI Product Manager / AI Program Manager roles.
+              Combines Andrew Ng's ML Specialization with hands-on projects applying ML to project management domains.
+            </p>
+
+            <h4 class="font-semibold text-white mb-2">Q1 2026 Phases:</h4>
+            <ul class="text-blue-100 text-sm space-y-1 mb-4">
+              <li>• <span class="text-blue-300">January:</span> ML Foundations (Coursera)</li>
+              <li>• <span class="text-blue-300">February:</span> 4 Hands-on ML Notebooks</li>
+              <li>• <span class="text-blue-300">March:</span> Flask App Deployment</li>
+            </ul>
+
+            <h4 class="font-semibold text-white mb-2">Gamification:</h4>
+            <ul class="text-blue-100 text-sm space-y-1">
+              <li>• Points system for daily learning</li>
+              <li>• Achievement badges to unlock</li>
+              <li>• Streak tracking for consistency</li>
+              <li>• Live progress dashboard</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-yellow-300 mb-3">Tech Stack</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Astro</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Supabase</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">TypeScript</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Vercel</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Python</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">scikit-learn</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Flask</span>
+              <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Jupyter</span>
+            </div>
+
+            <h4 class="font-semibold text-white mb-2">Key Features:</h4>
+            <ul class="text-blue-100 text-sm space-y-1">
+              <li>• <span class="text-yellow-300">Supabase backend</span> - Real-time progress updates</li>
+              <li>• <span class="text-yellow-300">Admin dashboard</span> - Password-protected updates</li>
+              <li>• <span class="text-yellow-300">No redeploy needed</span> - Changes reflect instantly</li>
+              <li>• <span class="text-yellow-300">4 ML notebooks</span> - PM-focused predictions</li>
+              <li>• <span class="text-yellow-300">Daily tracking</span> - 30 min/day commitment</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-white/20 flex flex-wrap gap-4">
+          <a href="/goals" class="inline-flex items-center gap-2 bg-white text-blue-700 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+            View Live Dashboard
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="https://github.com/Blkbrd77/ai-pm-upskilling-2026" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-white hover:text-yellow-300 transition-colors">
+            GitHub Repository
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
       <!-- Professional Highlights -->
       <h2 class="text-2xl font-bold mb-6">Professional Project Highlights</h2>
 
@@ -184,11 +257,13 @@ import Layout from '../layouts/Layout.astro';
           <span class="px-3 py-1 bg-white rounded-full text-sm border border-slate-300">Astro</span>
           <span class="px-3 py-1 bg-white rounded-full text-sm border border-slate-300">Tailwind CSS</span>
           <span class="px-3 py-1 bg-white rounded-full text-sm border border-slate-300">TypeScript</span>
+          <span class="px-3 py-1 bg-white rounded-full text-sm border border-slate-300">Supabase</span>
           <span class="px-3 py-1 bg-white rounded-full text-sm border border-slate-300">Vercel</span>
           <span class="px-3 py-1 bg-white rounded-full text-sm border border-slate-300">Claude Code</span>
         </div>
         <p class="text-slate-500 text-sm">
-          Scaffolded and developed with AI assistance from Claude Code, demonstrating efficient use of modern development tools.
+          Scaffolded and developed with AI assistance from Claude Code. Includes Supabase integration for dynamic
+          goals tracking with a password-protected admin dashboard.
         </p>
       </div>
     </div>
