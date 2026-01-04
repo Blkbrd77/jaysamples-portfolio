@@ -1,4 +1,6 @@
 ---
+export const prerender = false; // Server-render to fetch fresh data from Supabase
+
 import Layout from '../layouts/Layout.astro';
 import { getStats, getPhases, getBadges, getWeeks } from '../lib/supabase';
 
