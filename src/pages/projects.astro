@@ -21,8 +21,9 @@ import Layout from '../layouts/Layout.astro';
           <div>
             <h3 class="font-semibold text-blue-400 mb-3">The Journey</h3>
             <p class="text-slate-300 text-sm mb-4">
-              What started as a simple WordPress site evolved into a custom Flask application deployed on AWS.
-              This project became a playground for learning modern DevOps practices and AI-assisted development.
+              What started as a simple WordPress site evolved into a custom Flask application on AWS, then migrated
+              to Astro on Cloudflare Pages — reducing hosting costs while modernizing the frontend. This project
+              became a playground for learning modern DevOps practices and AI-assisted development.
             </p>
 
             <h4 class="font-semibold text-white mb-2">Evolution:</h4>
@@ -31,28 +32,31 @@ import Layout from '../layouts/Layout.astro';
               <li>• <span class="text-slate-400">Phase 2:</span> Flask/Python rewrite with Grok AI assistance</li>
               <li>• <span class="text-slate-400">Phase 3:</span> AWS Elastic Beanstalk deployment</li>
               <li>• <span class="text-slate-400">Phase 4:</span> CI/CD pipeline with GitHub Actions + Claude Code</li>
+              <li>• <span class="text-slate-400">Phase 5:</span> Astro/TypeScript migration to Cloudflare Pages with Claude Code</li>
             </ul>
           </div>
 
           <div>
             <h3 class="font-semibold text-blue-400 mb-3">Tech Stack</h3>
             <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Python</span>
-              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Flask</span>
-              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">AWS EB</span>
-              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">S3</span>
+              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Astro</span>
+              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">TypeScript</span>
+              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Cloudflare Pages</span>
+              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">AWS S3</span>
               <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">CloudFront</span>
               <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">GitHub Actions</span>
-              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">pytest</span>
+              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Vitest</span>
+              <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Playwright</span>
               <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Globe.gl</span>
             </div>
 
             <h4 class="font-semibold text-white mb-2">Key Achievements:</h4>
             <ul class="text-slate-300 text-sm space-y-1">
-              <li>• 95%+ test coverage with TDD approach</li>
-              <li>• Automated CI/CD: push to main → staging → manual prod</li>
+              <li>• 95%+ test coverage with unit (Vitest) and E2E (Playwright) testing</li>
+              <li>• Automated CI/CD: push to main → auto-deploy to Cloudflare Pages</li>
               <li>• Interactive 3D globe visualization with Globe.gl</li>
               <li>• Video hosting via S3/CloudFront CDN</li>
+              <li>• Migrated from Flask/AWS EB to Astro/Cloudflare to reduce hosting costs</li>
               <li>• Built with heavy AI assistance (Grok + Claude Code)</li>
             </ul>
           </div>
@@ -63,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
             This project demonstrates my ability to bridge program management with hands-on technical execution—understanding
             the full software development lifecycle from architecture through deployment and maintenance.
           </p>
-          <a href="https://www.2samples.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+          <a href="https://2samples.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
             Visit 2samples.com
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
